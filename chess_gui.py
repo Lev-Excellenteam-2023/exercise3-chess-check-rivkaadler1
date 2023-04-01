@@ -10,6 +10,7 @@ import pygame as py
 
 import ai_engine
 from enums import Player
+from chess_check_logger import logger
 
 """Variables"""
 WIDTH = HEIGHT = 512  # width and height of the chess board
@@ -96,6 +97,10 @@ def main():
                 while True:
                     human_player = input("What color do you want to play (w or b)?\n")
                     if human_player is "w" or human_player is "b":
+                        if human_player is "w":
+                            logger.info("The human player chose the white pieces")
+                        else:
+                            logger.info("The human player chose the black pieces")
                         break
                     else:
                         print("Enter w or b.\n")
@@ -181,12 +186,15 @@ def main():
         if endgame == 0:
             game_over = True
             draw_text(screen, "Black wins.")
+            logger.info("Black won.")
         elif endgame == 1:
             game_over = True
             draw_text(screen, "White wins.")
+            logger.info("White won.")
         elif endgame == 2:
             game_over = True
             draw_text(screen, "Stalemate.")
+            logger.info("Stalemate.")
 
         clock.tick(MAX_FPS)
         py.display.flip()
