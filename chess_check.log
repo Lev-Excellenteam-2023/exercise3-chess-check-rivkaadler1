@@ -7,3 +7,20 @@
 2023-04-02 02:28:58,440 - root - INFO - The human player chose the black pieces
 2023-04-02 02:28:59,217 - root - INFO - The player with the white chess pieces started
 2023-04-02 02:28:59,265 - root - INFO - The player with the white chess pieces started
+2023-04-03 22:24:56,976 - root - INFO - New game.
+2023-04-03 22:25:48,040 - root - INFO - New game.
+2023-04-03 22:25:57,995 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-03 22:25:57,996 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-03 22:26:29,451 - root - INFO - New game.
+2023-04-03 22:30:18,272 - root - INFO - New game.
+2023-04-03 22:30:23,376 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-03 23:39:58,708 - root - INFO - New game.
+2023-04-03 23:40:06,691 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 andthe computer player is PLAYER_2
+2023-04-03 23:40:06,691 - root - INFO - The human player starts the game
+2023-04-03 23:40:06,691 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-03 23:40:42,059 - root - INFO - New game.
+2023-04-03 23:40:45,994 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-03 23:40:45,994 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-03 23:40:46,987 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-03 23:40:47,055 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 03:37:13,444 - root - INFO - New game.

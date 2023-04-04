@@ -5,12 +5,11 @@
 # Note: The pygame tutorial by Eddie Sharick was used for the GUI engine. The GUI code was altered by Boo Sung Kim to
 # fit in with the rest of the project.
 #
+import ai_engine
 import chess_engine
 import pygame as py
-
-import ai_engine
-from enums import Player
 from chess_check_logger import logger
+from enums import Player
 
 """Variables"""
 WIDTH = HEIGHT = 512  # width and height of the chess board
@@ -19,6 +18,7 @@ SQ_SIZE = HEIGHT // DIMENSION  # the size of each of the squares in the board
 MAX_FPS = 15  # FPS for animations
 IMAGES = {}  # images for the chess pieces
 colors = [py.Color("white"), py.Color("gray")]
+
 
 # TODO: AI black has been worked on. Mirror progress for other two modes
 def load_images():
@@ -88,6 +88,7 @@ def highlight_square(screen, game_state, valid_moves, square_selected):
 
 def main():
     # Check for the number of players and the color of the AI
+    logger.info("New game.")
     human_player = ""
     while True:
         try:
@@ -98,9 +99,13 @@ def main():
                     human_player = input("What color do you want to play (w or b)?\n")
                     if human_player is "w" or human_player is "b":
                         if human_player is "w":
-                            logger.info("The human player chose the white pieces")
+                            logger.info("The human player chose the white pieces, The human player is PLAYER_1 and"
+                                        "the computer player is PLAYER_2")
+                            # Part of the game rules and also based on the chess_engine.get_state() function
+                            logger.info("The human player starts the game")
                         else:
-                            logger.info("The human player chose the black pieces")
+                            logger.info("The human player chose the black pieces, The human player is PLAYER_2 and "
+                                        "the computer player is PLAYER_1 ")
                         break
                     else:
                         print("Enter w or b.\n")
@@ -113,6 +118,10 @@ def main():
         except ValueError:
             print("Enter 1 or 2.")
 
+    # Part of the game rules and also based on the chess_engine.get_state() function
+    logger.info("PLAYER_1(with the white pieces) starts the game")
+
+    # Initialize Pygame modules
     py.init()
     screen = py.display.set_mode((WIDTH, HEIGHT))
     clock = py.time.Clock()
@@ -126,11 +135,13 @@ def main():
 
     ai = ai_engine.chess_ai()
     game_state = chess_engine.game_state()
+    # If the ai player begins this is his first turn
     if human_player is 'b':
         ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
         game_state.move_piece(ai_move[0], ai_move[1], True)
 
     while running:
+        logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
         for e in py.event.get():
             if e.type == py.QUIT:
                 running = False
@@ -157,7 +168,7 @@ def main():
                             square_selected = ()
                             player_clicks = []
                             valid_moves = []
-
+                            logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
                             if human_player is 'w':
                                 ai_move = ai.minimax_white(game_state, 3, -100000, 100000, True, Player.PLAYER_2)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
@@ -186,11 +197,11 @@ def main():
         if endgame == 0:
             game_over = True
             draw_text(screen, "Black wins.")
-            logger.info("Black won.")
+            logger.info("PLAYER_2 won.")
         elif endgame == 1:
             game_over = True
             draw_text(screen, "White wins.")
-            logger.info("White won.")
+            logger.info("PLAYER_1 won.")
         elif endgame == 2:
             game_over = True
             draw_text(screen, "Stalemate.")

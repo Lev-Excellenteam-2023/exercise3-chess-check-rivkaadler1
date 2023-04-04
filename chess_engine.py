@@ -48,6 +48,9 @@ class game_state:
                                       True]  # Has king not moved, has Rook1(col=0) not moved, has Rook2(col=7) not moved
         self.black_king_can_castle = [True, True, True]
 
+        self.count_checks = 0
+        self._is_True_ai_step=False
+
         # Initialize White pieces
         white_rook_1 = Rook('r', 0, 0, Player.PLAYER_1)
         white_rook_2 = Rook('r', 0, 7, Player.PLAYER_1)
@@ -110,11 +113,15 @@ class game_state:
             [black_rook_1, black_knight_1, black_bishop_1, black_king, black_queen, black_bishop_2, black_knight_2,
              black_rook_2]
         ]
-        if self.white_turn:
-            logger.info("The player with the white chess pieces started")
-        else:
-            logger.info("The player with the black chess pieces started")
 
+
+    def get_pieces_on_the_board(self):
+        board_pieces = " "
+        for row in self.board:
+            for i in range(8):
+                if row[i] != Player.EMPTY:
+                    board_pieces += row[i].get_name() + " " + row[i].get_player() + " "
+        return board_pieces
 
     def get_piece(self, row, col):
         if (0 <= row < 8) and (0 <= col < 8):
@@ -227,14 +234,11 @@ class game_state:
         all_black_moves = self.get_all_legal_moves(Player.PLAYER_2)
         if self._is_check and self.whose_turn() and not all_white_moves:
             print("white lost")
-            logger.info("black won.")
             return 0
         elif self._is_check and not self.whose_turn() and not all_black_moves:
             print("black lost")
-            logger.info("white won.")
             return 1
         elif not all_white_moves and not all_black_moves:
-            logger.info("stalemate.")
             return 2
         else:
             return 3
@@ -316,11 +320,14 @@ class game_state:
         return self._en_passant_previous
 
     # Move a piece
-    def move_piece(self, starting_square, ending_square, is_ai):
+    def move_piece(self, starting_square, ending_square, is_ai, is_True_ai_step=False):
         current_square_row = starting_square[0]  # The integer row value of the starting square
         current_square_col = starting_square[1]  # The integer col value of the starting square
         next_square_row = ending_square[0]  # The integer row value of the ending square
         next_square_col = ending_square[1]  # The integer col value of the ending square
+
+
+        self._is_True_ai_step = is_True_ai_step
 
         if self.is_valid_piece(current_square_row, current_square_col) and \
                 (((self.whose_turn() and self.get_piece(current_square_row, current_square_col).is_player(

@@ -73,7 +73,9 @@ class chess_ai:
                 return best_possible_move
             else:
                 return min_evaluation
-
+            # 0 if white lost, 1 if black lost, 2 if stalemate, 3 if not game over
+        #ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
+       # game_state.move_piece(ai_move[0], ai_move[1], True)
     def minimax_black(self, game_state, depth, alpha, beta, maximizing_player, player_color):
         csc = game_state.checkmate_stalemate_checker()
         if maximizing_player:
@@ -141,6 +143,7 @@ class chess_ai:
         return evaluation_score
 
     def get_piece_value(self, piece, player):
+        #if the player is white
         if player is Player.PLAYER_1:
             if piece.is_player("black"):
                 if piece.get_name() is "k":
