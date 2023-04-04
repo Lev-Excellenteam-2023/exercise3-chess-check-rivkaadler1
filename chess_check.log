@@ -1,26 +1,89 @@
-2023-04-02 02:25:54,865 - root - INFO - The human player chose the black pieces
-2023-04-02 02:25:55,022 - root - INFO - The player with the white chess pieces started
-2023-04-02 02:25:55,071 - root - INFO - The player with the white chess pieces started
-2023-04-02 02:28:09,383 - root - INFO - The human player chose the white pieces
-2023-04-02 02:28:10,178 - root - INFO - The player with the white chess pieces started
-2023-04-02 02:28:10,223 - root - INFO - The player with the white chess pieces started
-2023-04-02 02:28:58,440 - root - INFO - The human player chose the black pieces
-2023-04-02 02:28:59,217 - root - INFO - The player with the white chess pieces started
-2023-04-02 02:28:59,265 - root - INFO - The player with the white chess pieces started
-2023-04-03 22:24:56,976 - root - INFO - New game.
-2023-04-03 22:25:48,040 - root - INFO - New game.
-2023-04-03 22:25:57,995 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
-2023-04-03 22:25:57,996 - root - INFO - PLAYER_1(with the white pieces) starts the game
-2023-04-03 22:26:29,451 - root - INFO - New game.
-2023-04-03 22:30:18,272 - root - INFO - New game.
-2023-04-03 22:30:23,376 - root - INFO - PLAYER_1(with the white pieces) starts the game
-2023-04-03 23:39:58,708 - root - INFO - New game.
-2023-04-03 23:40:06,691 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 andthe computer player is PLAYER_2
-2023-04-03 23:40:06,691 - root - INFO - The human player starts the game
-2023-04-03 23:40:06,691 - root - INFO - PLAYER_1(with the white pieces) starts the game
-2023-04-03 23:40:42,059 - root - INFO - New game.
-2023-04-03 23:40:45,994 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
-2023-04-03 23:40:45,994 - root - INFO - PLAYER_1(with the white pieces) starts the game
-2023-04-03 23:40:46,987 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
-2023-04-03 23:40:47,055 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
-2023-04-04 03:37:13,444 - root - INFO - New game.
+
+2023-04-04 13:07:06,194 - root - INFO - New game.
+2023-04-04 13:07:11,717 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 andthe computer player is PLAYER_2
+2023-04-04 13:07:11,717 - root - INFO - The human player starts the game
+2023-04-04 13:07:11,717 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:08:26,233 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:26,234 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:28,467 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:38,814 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:38,814 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:45,364 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:51,044 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:51,045 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:08:58,748 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p black p white p white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:21,164 - root - INFO - New game.
+2023-04-04 13:10:27,006 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-04-04 13:10:27,014 - root - INFO - The human player starts the game
+2023-04-04 13:10:27,014 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:10:36,342 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:36,343 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:38,608 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:43,671 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:43,671 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:50,050 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:55,740 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:10:55,741 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:11:03,912 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white n white p black p white p white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:11:07,594 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white p black p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:11:07,595 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white p black p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:11:12,376 - root - INFO - The pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white p black p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:11:16,384 - root - INFO - The amount of checks that were in the game: 7
+2023-04-04 13:13:12,384 - root - INFO - New game.
+2023-04-04 13:13:17,993 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-04 13:13:17,993 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:13:30,991 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:13:30,992 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:13:39,985 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white p white n white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:13:48,158 - root - INFO - The amount of checks that were in the game: 1
+2023-04-04 13:13:48,159 - root - INFO - The number of moves the knights made: 2
+2023-04-04 13:13:48,159 - root - INFO - The number of turns that all the pieces of the white color survived is: 0
+2023-04-04 13:13:48,160 - root - INFO - The number of turns that all the pieces of the black color survived is: 0
+2023-04-04 13:22:55,712 - root - INFO - New game.
+2023-04-04 13:23:02,713 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-04-04 13:23:02,713 - root - INFO - The human player starts the game
+2023-04-04 13:23:02,721 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:23:09,099 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:23:09,101 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:24:15,405 - root - INFO - New game.
+2023-04-04 13:24:31,422 - root - INFO - New game.
+2023-04-04 13:24:36,556 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-04-04 13:24:36,564 - root - INFO - The human player starts the game
+2023-04-04 13:24:36,564 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:24:41,652 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:24:41,653 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:26:00,316 - root - INFO - New game.
+2023-04-04 13:26:05,916 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-04 13:26:05,916 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:26:38,826 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:26:38,827 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:27:42,861 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white p white n white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:31:05,257 - root - INFO - New game.
+2023-04-04 13:31:17,532 - root - INFO - New game.
+2023-04-04 13:31:30,457 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-04 13:31:30,466 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:32:07,002 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:32:07,004 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:33:02,767 - root - INFO - New game.
+2023-04-04 13:33:10,278 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-04 13:33:10,278 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:33:46,915 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:33:46,916 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:35:10,319 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:35:40,614 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:35:40,615 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:38:19,735 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white p white n white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:39:04,162 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white p white n white n white p black q black p black p black p black p black p black p black r black n black b black k black b black n black r black 
+2023-04-04 13:39:04,163 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white p white n white n white p black q black p black p black p black p black p black p black r black n black b black k black b black n black r black 
+2023-04-04 13:43:37,244 - root - INFO - The pieces on the board are: r white b white k white q white b white r white p white p white p white p white p white p white p white n white p white n white p black q black p black p black p black p black p black p black r black n black b black k black b black n black r black 
+2023-04-04 13:46:02,517 - root - INFO - The amount of checks that were in the game: 5
+2023-04-04 13:47:12,620 - root - INFO - New game.
+2023-04-04 13:47:19,653 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-04-04 13:47:19,653 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-04-04 13:47:28,850 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:47:28,850 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:47:40,329 - root - INFO - The pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-04-04 13:47:46,338 - root - INFO - The amount of checks that were in the game: 1
+2023-04-04 13:47:46,339 - root - INFO - The number of moves the knights made: 2
+2023-04-04 13:47:46,339 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-04-04 13:47:46,340 - root - INFO - The number of turns that all the pieces of the black color survived is: -1

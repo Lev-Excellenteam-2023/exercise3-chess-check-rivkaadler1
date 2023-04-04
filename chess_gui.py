@@ -100,7 +100,7 @@ def main():
                     if human_player is "w" or human_player is "b":
                         if human_player is "w":
                             logger.info("The human player chose the white pieces, The human player is PLAYER_1 and"
-                                        "the computer player is PLAYER_2")
+                                        " the computer player is PLAYER_2")
                             # Part of the game rules and also based on the chess_engine.get_state() function
                             logger.info("The human player starts the game")
                         else:
@@ -132,7 +132,8 @@ def main():
     player_clicks = []  # keeps track of player clicks (two tuples)
     valid_moves = []
     game_over = False
-
+    all_whites_together = -1
+    all_blacks_together = -1
     ai = ai_engine.chess_ai()
     game_state = chess_engine.game_state()
     # If the ai player begins this is his first turn
@@ -141,7 +142,6 @@ def main():
         game_state.move_piece(ai_move[0], ai_move[1], True)
 
     while running:
-        logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
         for e in py.event.get():
             if e.type == py.QUIT:
                 running = False
@@ -165,6 +165,14 @@ def main():
                         else:
                             game_state.move_piece((player_clicks[0][0], player_clicks[0][1]),
                                                   (player_clicks[1][0], player_clicks[1][1]), False)
+                            logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
+                            if all_whites_together == -1 and human_player == "b":
+                                if len(game_state.white_captives) == 1:
+                                    all_whites_together = len(game_state.move_log)
+                            elif all_blacks_together == -1 and human_player == "w":
+                                if len(game_state.black_captives) == 1:
+                                    all_blacks_together = len(game_state.move_log)
+
                             square_selected = ()
                             player_clicks = []
                             valid_moves = []
@@ -172,9 +180,11 @@ def main():
                             if human_player is 'w':
                                 ai_move = ai.minimax_white(game_state, 3, -100000, 100000, True, Player.PLAYER_2)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
+                                logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
                             elif human_player is 'b':
                                 ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
+                                logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
                     else:
                         valid_moves = game_state.get_valid_moves((row, col))
                         if valid_moves is None:
@@ -206,9 +216,12 @@ def main():
             game_over = True
             draw_text(screen, "Stalemate.")
             logger.info("Stalemate.")
-
         clock.tick(MAX_FPS)
         py.display.flip()
+    logger.info("The amount of checks that were in the game: " + str(game_state.get_number_of_checks()))
+    logger.info("The number of moves the knights made: " + str(game_state.get_number_of_moves_the_knights_made()))
+    logger.info("The number of turns that all the pieces of the white color survived is: " + str(all_whites_together))
+    logger.info("The number of turns that all the pieces of the black color survived is: " + str(all_blacks_together))
 
     # elif human_player is 'w':
     #     ai = ai_engine.chess_ai()
