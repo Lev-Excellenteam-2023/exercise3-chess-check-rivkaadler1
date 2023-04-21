@@ -5,10 +5,10 @@
 # Note: The pygame tutorial by Eddie Sharick was used for the GUI engine. The GUI code was altered by Boo Sung Kim to
 # fit in with the rest of the project.
 #
+import ai_engine
 import chess_engine
 import pygame as py
-
-import ai_engine
+from chess_check_logger import logger
 from enums import Player
 
 """Variables"""
@@ -18,6 +18,7 @@ SQ_SIZE = HEIGHT // DIMENSION  # the size of each of the squares in the board
 MAX_FPS = 15  # FPS for animations
 IMAGES = {}  # images for the chess pieces
 colors = [py.Color("white"), py.Color("gray")]
+
 
 # TODO: AI black has been worked on. Mirror progress for other two modes
 def load_images():
@@ -29,12 +30,12 @@ def load_images():
 
 
 def draw_game_state(screen, game_state, valid_moves, square_selected):
-    ''' Draw the complete chess board with pieces
+    """ Draw the complete chess board with pieces
 
     Keyword arguments:
         :param screen       -- the pygame screen
         :param game_state   -- the state of the current chess game
-    '''
+    """
     draw_squares(screen)
     highlight_square(screen, game_state, valid_moves, square_selected)
     draw_pieces(screen, game_state)
@@ -87,6 +88,7 @@ def highlight_square(screen, game_state, valid_moves, square_selected):
 
 def main():
     # Check for the number of players and the color of the AI
+    logger.info("New game.")
     human_player = ""
     while True:
         try:
@@ -96,6 +98,14 @@ def main():
                 while True:
                     human_player = input("What color do you want to play (w or b)?\n")
                     if human_player is "w" or human_player is "b":
+                        if human_player is "w":
+                            logger.info("The human player chose the white pieces, The human player is PLAYER_1 and"
+                                        " the computer player is PLAYER_2")
+                            # Part of the game rules and also based on the chess_engine.get_state() function
+                            logger.info("The human player starts the game")
+                        else:
+                            logger.info("The human player chose the black pieces, The human player is PLAYER_2 and "
+                                        "the computer player is PLAYER_1 ")
                         break
                     else:
                         print("Enter w or b.\n")
@@ -108,6 +118,10 @@ def main():
         except ValueError:
             print("Enter 1 or 2.")
 
+    # Part of the game rules and also based on the chess_engine.get_state() function
+    logger.info("PLAYER_1(with the white pieces) starts the game")
+
+    # Initialize Pygame modules
     py.init()
     screen = py.display.set_mode((WIDTH, HEIGHT))
     clock = py.time.Clock()
@@ -121,14 +135,22 @@ def main():
 
     ai = ai_engine.chess_ai()
     game_state = chess_engine.game_state()
+    number_of_checks = 0
+    moves_counter = 0
+    logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
+    # If the ai player begins this is his first turn
     if human_player is 'b':
         ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
         game_state.move_piece(ai_move[0], ai_move[1], True)
+        moves_counter += 1
+        logger.info("After move #" + str(
+            moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
 
     while running:
         for e in py.event.get():
             if e.type == py.QUIT:
                 running = False
+                game_over = True
             elif e.type == py.MOUSEBUTTONDOWN:
                 if not game_over:
                     location = py.mouse.get_pos()
@@ -149,16 +171,54 @@ def main():
                         else:
                             game_state.move_piece((player_clicks[0][0], player_clicks[0][1]),
                                                   (player_clicks[1][0], player_clicks[1][1]), False)
+                            moves_counter += 1
+                            logger.info("After move #" + str(
+                                moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                            if human_player == "w":
+                                if game_state.check_for_check(game_state.get_current_player_king_location(),
+                                                              Player.PLAYER_2)[0]:
+                                    number_of_checks += 1
+                            elif game_state.check_for_check(game_state.get_current_player_king_location(),
+                                                            Player.PLAYER_1)[0]:
+                                number_of_checks += 1
+                            endgame = game_state.checkmate_stalemate_checker()
+                            if endgame != 3:
+                                running = False
+                                game_over = True
+                                break
                             square_selected = ()
                             player_clicks = []
                             valid_moves = []
-
                             if human_player is 'w':
                                 ai_move = ai.minimax_white(game_state, 3, -100000, 100000, True, Player.PLAYER_2)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
+                                moves_counter += 1
+                                logger.info("After move #" + str(
+                                    moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                                if game_state.check_for_check(game_state.get_current_player_king_location(),
+                                                              Player.PLAYER_1)[0]:
+                                    number_of_checks += 1
+                                endgame = game_state.checkmate_stalemate_checker()
+                                if endgame != 3:
+                                    running = False
+                                    game_over = True
+                                    break
                             elif human_player is 'b':
                                 ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
+                                moves_counter += 1
+                                logger.info(
+                                    "After move #" + str(
+                                        moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                                if game_state.check_for_check(game_state.get_current_player_king_location(),
+                                                              Player.PLAYER_2)[0]:
+                                    number_of_checks += 1
+                                endgame = game_state.checkmate_stalemate_checker()
+                                if endgame != 3:
+                                    running = False
+                                    game_over = True
+                                    break
+
                     else:
                         valid_moves = game_state.get_valid_moves((row, col))
                         if valid_moves is None:
@@ -176,20 +236,32 @@ def main():
                     print(len(game_state.move_log))
 
         draw_game_state(screen, game_state, valid_moves, square_selected)
-
         endgame = game_state.checkmate_stalemate_checker()
-        if endgame == 0:
-            game_over = True
-            draw_text(screen, "Black wins.")
-        elif endgame == 1:
-            game_over = True
-            draw_text(screen, "White wins.")
-        elif endgame == 2:
-            game_over = True
-            draw_text(screen, "Stalemate.")
-
         clock.tick(MAX_FPS)
         py.display.flip()
+    endgame = game_state.checkmate_stalemate_checker()
+    if endgame == 0:
+        game_over = True
+        draw_text(screen, "Black wins.")
+        logger.info("PLAYER_2 won.")
+    elif endgame == 1:
+        game_over = True
+        draw_text(screen, "White wins.")
+        logger.info("PLAYER_1 won.")
+    elif endgame == 2:
+        game_over = True
+        draw_text(screen, "Stalemate.")
+        logger.info("Stalemate.")
+    clock.tick(MAX_FPS)
+    py.display.flip()
+
+    if game_over:
+        logger.info("The amount of checks that were in the game: " + str(number_of_checks))
+        logger.info(
+            "The number of moves the knights made: " + str(game_state.get_number_of_moves_the_knights_made()))
+        logger.info("The number of turns that all the pieces of the white color survived is: " + str(game_state.all_whites_together))
+        logger.info("The number of turns that all the pieces of the black color survived is: " +
+                    str(game_state.all_blacks_together))
 
     # elif human_player is 'w':
     #     ai = ai_engine.chess_ai()
