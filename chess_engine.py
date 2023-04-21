@@ -47,7 +47,9 @@ class game_state:
         self.white_king_can_castle = [True, True,
                                       True]  # Has king not moved, has Rook1(col=0) not moved, has Rook2(col=7) not moved
         self.black_king_can_castle = [True, True, True]
-        self.count_turns = 0
+
+        self.all_whites_together = -1
+        self.all_blacks_together = -1
 
         # Initialize White pieces
         white_rook_1 = Rook('r', 0, 0, Player.PLAYER_1)
@@ -113,28 +115,74 @@ class game_state:
         ]
 
     def get_pieces_on_the_board(self):
+        """
+        Returns a string which describes the pieces on the board, and updates the number of turns that all pieces of a
+        certain color survived together.
+        """
         board_pieces = " "
         for row in self.board:
             for i in range(8):
                 if row[i] != Player.EMPTY:
                     board_pieces += row[i].get_name() + " " + row[i].get_player() + " "
+        # Note: I implemented a function that does it (count_surviving_turns_for_color(self, player))in more
+        # efficient and elegant way but it doesn't work well in case of arbitrary exit
+        if self.all_whites_together == -1 and board_pieces.count("white") == 15:
+            self.all_whites_together = len(self.move_log) - 1
+        elif self.all_blacks_together == -1 and board_pieces.count("white") == 15:
+            self.all_blacks_together = len(self.move_log) - 1
+
         return board_pieces
 
-    def get_number_of_checks(self):
-        count_checks = 0
-        for move in self.move_log:
-            if move.in_check is True:
-                count_checks += 1
-        return count_checks
-
     def get_number_of_moves_the_knights_made(self):
+        """
+        Calculates the number of moves made by the knights in the game.
+
+        Returns:
+        -------
+        int:
+            The number of moves made by the knights.
+
+        """
         count_knights_moves = 0
         for move in self.move_log:
             if move.moving_piece.get_name() == 'n':
                 count_knights_moves += 1
         return count_knights_moves
 
+    def count_surviving_turns_for_color(self, player):
+        """
+        Counts the number of turns that all pieces of a given player survive together in the game.
 
+        Parameters:
+            player (Player): The player whose surviving turns to count.
+
+        Returns:
+            int: The number of turns that all pieces of the given player survive together in the game.
+                 Returns -1 if the player has no surviving turns.
+        """
+        # Loop through the moves of the game
+        for move in self.move_log:
+            # Check if the moving piece is not from the given player and if a piece was removed
+            if move.moving_piece.get_player() != player and move.removed_piece != Player.EMPTY:
+                return self.move_log.index(move)
+        return -1
+
+    def get_current_player_king_location(self):
+        """
+        Returns the current player's king location in the game.
+
+        Returns:
+        -------
+        list:
+            The location of the current player's king.
+
+        """
+        if self.whose_turn():
+            # if it is Player_1 turn
+            return self._white_king_location
+        else:
+            # if it is Player_2 turn
+            return self._black_king_location
 
     def get_piece(self, row, col):
         if (0 <= row < 8) and (0 <= col < 8):
@@ -255,6 +303,20 @@ class game_state:
             return 2
         else:
             return 3
+        '''
+        all_white_moves = self.get_all_legal_moves(Player.PLAYER_1)
+        all_black_moves = self.get_all_legal_moves(Player.PLAYER_2)
+        if not all_white_moves and not all_black_moves:
+            return 2
+        elif self.whose_turn() and not all_white_moves:
+            print("white lost")
+            return 0
+        elif not self.whose_turn() and not all_black_moves:
+            print("black lost")
+            return 1
+        else:
+            return 3
+        '''
 
     def get_all_legal_moves(self, player):
         # _all_valid_moves = [[], []]
@@ -338,8 +400,6 @@ class game_state:
         current_square_col = starting_square[1]  # The integer col value of the starting square
         next_square_row = ending_square[0]  # The integer row value of the ending square
         next_square_col = ending_square[1]  # The integer col value of the ending square
-
-
 
         if self.is_valid_piece(current_square_row, current_square_col) and \
                 (((self.whose_turn() and self.get_piece(current_square_row, current_square_col).is_player(
@@ -928,5 +988,3 @@ class chess_move():
 
     def get_moving_piece(self):
         return self.moving_piece
-
-
