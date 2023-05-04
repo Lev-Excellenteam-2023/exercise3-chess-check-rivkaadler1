@@ -553,6 +553,7 @@ class game_state:
                     self.board[current_square_row][current_square_col] = Player.EMPTY
 
                 self.white_turn = not self.white_turn
+                print("done")
 
             else:
                 pass
