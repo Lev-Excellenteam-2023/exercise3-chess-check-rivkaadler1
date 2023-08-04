@@ -8,6 +8,7 @@
 # TODO: switch undo moves to stack data structure
 import chess_engine
 from enums import Player
+from chess_check_logger import logger
 
 
 class chess_ai:
@@ -16,6 +17,7 @@ class chess_ai:
     evaluate board
     get the value of each piece
     '''
+
     def minimax_white(self, game_state, depth, alpha, beta, maximizing_player, player_color):
         csc = game_state.checkmate_stalemate_checker()
         if maximizing_player:
@@ -89,7 +91,6 @@ class chess_ai:
                 return -5000000
             elif csc == 2:
                 return 100
-
         if depth <= 0 or csc != 3:
             return self.evaluate_board(game_state, Player.PLAYER_2)
 
@@ -140,21 +141,9 @@ class chess_ai:
         return evaluation_score
 
     def get_piece_value(self, piece, player):
+        # if the human player is white
         if player is Player.PLAYER_1:
             if piece.is_player("black"):
-                if piece.get_name() is "k":
-                    return -1000
-                elif piece.get_name() is "q":
-                    return -100
-                elif piece.get_name() is "r":
-                    return -50
-                elif piece.get_name() is "b":
-                    return -30
-                elif piece.get_name() is "n":
-                    return -30
-                elif piece.get_name() is "p":
-                    return -10
-            else:
                 if piece.get_name() is "k":
                     return 1000
                 elif piece.get_name() is "q":
@@ -167,6 +156,19 @@ class chess_ai:
                     return 30
                 elif piece.get_name() is "p":
                     return 10
+            else:
+                if piece.get_name() is "k":
+                    return -1000
+                elif piece.get_name() is "q":
+                    return -100
+                elif piece.get_name() is "r":
+                    return -50
+                elif piece.get_name() is "b":
+                    return -30
+                elif piece.get_name() is "n":
+                    return -30
+                elif piece.get_name() is "p":
+                    return -10
         else:
             if piece.is_player("white"):
                 if piece.get_name() is "k":
