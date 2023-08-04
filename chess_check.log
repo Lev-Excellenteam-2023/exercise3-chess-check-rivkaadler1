@@ -756,3 +756,94 @@
 2023-05-04 16:37:56,115 - root - INFO - The human player starts the game
 2023-05-04 16:37:56,115 - root - INFO - PLAYER_1(with the white pieces) starts the game
 2023-05-04 16:37:57,220 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-05 09:53:23,735 - root - INFO - New game.
+2023-05-05 09:53:57,605 - root - INFO - New game.
+2023-05-05 09:56:42,310 - root - INFO - New game.
+2023-05-05 09:56:49,362 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-05-05 09:56:49,363 - root - INFO - The human player starts the game
+2023-05-05 09:56:49,364 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-05 09:56:50,959 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-05 10:40:06,407 - root - INFO - The amount of checks that were in the game: 0
+2023-05-05 10:40:06,407 - root - INFO - The number of moves the knights made: 0
+2023-05-05 10:40:06,408 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-05-05 10:40:06,408 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
+2023-05-28 14:46:09,553 - root - INFO - New game.
+2023-05-28 14:48:11,082 - root - INFO - New game.
+2023-05-28 14:48:22,587 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-05-28 14:48:22,588 - root - INFO - The human player starts the game
+2023-05-28 14:48:22,588 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-28 14:48:23,751 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:51:23,034 - root - INFO - New game.
+2023-05-28 14:51:30,139 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-05-28 14:51:30,139 - root - INFO - The human player starts the game
+2023-05-28 14:51:30,140 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-28 14:51:30,764 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:52:06,363 - root - INFO - The amount of checks that were in the game: 0
+2023-05-28 14:52:06,363 - root - INFO - The number of moves the knights made: 4
+2023-05-28 14:52:06,363 - root - INFO - The number of turns that all the pieces of the white color survived is: 5
+2023-05-28 14:52:06,363 - root - INFO - The number of turns that all the pieces of the black color survived is: 6
+2023-05-28 14:52:42,925 - root - INFO - New game.
+2023-05-28 14:52:59,875 - root - INFO - New game.
+2023-05-28 14:53:06,171 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-05-28 14:53:06,171 - root - INFO - The human player starts the game
+2023-05-28 14:53:06,172 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-28 14:53:07,100 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:55:19,698 - root - INFO - New game.
+2023-05-28 14:55:28,868 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-05-28 14:55:28,869 - root - INFO - The human player starts the game
+2023-05-28 14:55:28,869 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-28 14:55:29,454 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:55:33,736 - root - INFO - After move #0 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:55:35,266 - root - INFO - After move #1 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:58:18,617 - root - INFO - New game.
+2023-05-28 14:58:26,812 - root - INFO - The human player chose the black pieces, The human player is PLAYER_2 and the computer player is PLAYER_1 
+2023-05-28 14:58:26,813 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-05-28 14:58:27,451 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:58:28,840 - root - INFO - After move #1 the pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:58:38,240 - root - INFO - After move #2 the pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:58:41,105 - root - INFO - After move #3 the pieces on the board are: r white b white k white q white b white n white r white p white p white p white p white p white p white p white p white n white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-05-28 14:58:44,859 - root - INFO - The amount of checks that were in the game: 0
+2023-05-28 14:58:44,859 - root - INFO - The number of moves the knights made: 2
+2023-05-28 14:58:44,860 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-05-28 14:58:44,860 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
+2023-06-03 22:36:49,315 - root - INFO - New game.
+2023-06-03 22:36:56,225 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-06-03 22:36:57,536 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-03 22:37:12,267 - root - INFO - After move #1 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-03 22:37:18,912 - root - INFO - After move #2 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-03 22:37:22,566 - root - INFO - After move #3 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p black p white p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-04 00:10:37,549 - root - INFO - The amount of checks that were in the game: 0
+2023-06-04 00:10:37,550 - root - INFO - The number of moves the knights made: 0
+2023-06-04 00:10:37,550 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-06-04 00:10:37,551 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
+2023-06-05 14:49:31,607 - root - INFO - New game.
+2023-06-05 14:49:35,725 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-06-05 14:49:36,859 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:49:48,863 - root - INFO - After move #1 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:49:59,385 - root - INFO - After move #2 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:02,598 - root - INFO - The amount of checks that were in the game: 0
+2023-06-05 14:50:02,598 - root - INFO - The number of moves the knights made: 0
+2023-06-05 14:50:02,599 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-06-05 14:50:02,599 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
+2023-06-05 14:50:25,462 - root - INFO - New game.
+2023-06-05 14:50:31,547 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-06-05 14:50:31,548 - root - INFO - The human player starts the game
+2023-06-05 14:50:31,548 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-06-05 14:50:32,473 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:40,284 - root - INFO - After move #1 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:44,217 - root - INFO - After move #2 the pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:49,086 - root - INFO - After move #3 the pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white p white n white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:53,099 - root - INFO - After move #4 the pieces on the board are: r white n white b white k white q white b white r white p white p white p white p white p white p white p white n white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 14:50:55,454 - root - INFO - The amount of checks that were in the game: 0
+2023-06-05 14:50:55,454 - root - INFO - The number of moves the knights made: 1
+2023-06-05 14:50:55,455 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-06-05 14:50:55,455 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
+2023-06-05 15:02:10,667 - root - INFO - New game.
+2023-06-05 15:02:17,281 - root - INFO - The human player chose the white pieces, The human player is PLAYER_1 and the computer player is PLAYER_2
+2023-06-05 15:02:17,282 - root - INFO - The human player starts the game
+2023-06-05 15:02:17,282 - root - INFO - PLAYER_1(with the white pieces) starts the game
+2023-06-05 15:02:18,283 - root - INFO - The pieces on the board are: r white n white b white k white q white b white n white r white p white p white p white p white p white p white p white p white p black p black p black p black p black p black p black p black r black n black b black k black q black b black n black r black 
+2023-06-05 15:45:34,942 - root - INFO - The amount of checks that were in the game: 0
+2023-06-05 15:45:34,943 - root - INFO - The number of moves the knights made: 0
+2023-06-05 15:45:34,943 - root - INFO - The number of turns that all the pieces of the white color survived is: -1
+2023-06-05 15:45:34,943 - root - INFO - The number of turns that all the pieces of the black color survived is: -1
