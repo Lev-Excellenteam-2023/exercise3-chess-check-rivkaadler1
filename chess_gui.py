@@ -86,6 +86,20 @@ def highlight_square(screen, game_state, valid_moves, square_selected):
                 screen.blit(s, (move[1] * SQ_SIZE, move[0] * SQ_SIZE))
 
 
+def after_move_func(number_of_move: int, current_pieces_on_the_board: str):
+    logger.info("After move #" + str(number_of_move+1) + " the pieces on the board are:" + current_pieces_on_the_board)
+    return number_of_move + 1
+
+
+def end_of_game_state_log(number_of_checks: int, number_of_moves_the_knights_made: int, all_whites_together: int,
+                          all_blacks_together: int):
+    logger.info("The amount of checks that were in the game: " + str(number_of_checks))
+    logger.info(
+        "The number of moves the knights made: " + str(number_of_moves_the_knights_made))
+    logger.info("The number of turns that all the pieces of the white color survived is: " + str(all_whites_together))
+    logger.info("The number of turns that all the pieces of the black color survived is: " + str(all_blacks_together))
+
+
 def main():
     # Check for the number of players and the color of the AI
     logger.info("New game.")
@@ -94,11 +108,10 @@ def main():
         try:
             number_of_players = input("How many players (1 or 2)?\n")
             if int(number_of_players) == 1:
-                number_of_players = 1
                 while True:
                     human_player = input("What color do you want to play (w or b)?\n")
-                    if human_player is "w" or human_player is "b":
-                        if human_player is "w":
+                    if human_player in ("w", "b"):
+                        if human_player == "w":
                             logger.info("The human player chose the white pieces, The human player is PLAYER_1 and"
                                         " the computer player is PLAYER_2")
                             # Part of the game rules and also based on the chess_engine.get_state() function
@@ -111,7 +124,6 @@ def main():
                         print("Enter w or b.\n")
                 break
             elif int(number_of_players) == 2:
-                number_of_players = 2
                 break
             else:
                 print("Enter 1 or 2.\n")
@@ -125,7 +137,6 @@ def main():
     py.init()
     screen = py.display.set_mode((WIDTH, HEIGHT))
     clock = py.time.Clock()
-    game_state = chess_engine.game_state()
     load_images()
     running = True
     square_selected = ()  # keeps track of the last selected square
@@ -139,12 +150,10 @@ def main():
     moves_counter = 0
     logger.info("The pieces on the board are:" + game_state.get_pieces_on_the_board())
     # If the ai player begins this is his first turn
-    if human_player is 'b':
+    if human_player == 'b':
         ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
         game_state.move_piece(ai_move[0], ai_move[1], True)
-        moves_counter += 1
-        logger.info("After move #" + str(
-            moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+        moves_counter = after_move_func(moves_counter, game_state.get_pieces_on_the_board())
 
     while running:
         for e in py.event.get():
@@ -171,9 +180,7 @@ def main():
                         else:
                             game_state.move_piece((player_clicks[0][0], player_clicks[0][1]),
                                                   (player_clicks[1][0], player_clicks[1][1]), False)
-                            moves_counter += 1
-                            logger.info("After move #" + str(
-                                moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                            moves_counter = after_move_func(moves_counter, game_state.get_pieces_on_the_board())
                             if human_player == "w":
                                 if game_state.check_for_check(game_state.get_current_player_king_location(),
                                                               Player.PLAYER_2)[0]:
@@ -189,12 +196,10 @@ def main():
                             square_selected = ()
                             player_clicks = []
                             valid_moves = []
-                            if human_player is 'w':
+                            if human_player == 'w':
                                 ai_move = ai.minimax_white(game_state, 3, -100000, 100000, True, Player.PLAYER_2)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
-                                moves_counter += 1
-                                logger.info("After move #" + str(
-                                    moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                                moves_counter = after_move_func(moves_counter, game_state.get_pieces_on_the_board())
                                 if game_state.check_for_check(game_state.get_current_player_king_location(),
                                                               Player.PLAYER_1)[0]:
                                     number_of_checks += 1
@@ -203,13 +208,10 @@ def main():
                                     running = False
                                     game_over = True
                                     break
-                            elif human_player is 'b':
+                            elif human_player == 'b':
                                 ai_move = ai.minimax_black(game_state, 3, -100000, 100000, True, Player.PLAYER_1)
                                 game_state.move_piece(ai_move[0], ai_move[1], True)
-                                moves_counter += 1
-                                logger.info(
-                                    "After move #" + str(
-                                        moves_counter) + " the pieces on the board are:" + game_state.get_pieces_on_the_board())
+                                moves_counter = after_move_func(moves_counter, game_state.get_pieces_on_the_board())
                                 if game_state.check_for_check(game_state.get_current_player_king_location(),
                                                               Player.PLAYER_2)[0]:
                                     number_of_checks += 1
@@ -256,12 +258,8 @@ def main():
     py.display.flip()
 
     if game_over:
-        logger.info("The amount of checks that were in the game: " + str(number_of_checks))
-        logger.info(
-            "The number of moves the knights made: " + str(game_state.get_number_of_moves_the_knights_made()))
-        logger.info("The number of turns that all the pieces of the white color survived is: " + str(game_state.all_whites_together))
-        logger.info("The number of turns that all the pieces of the black color survived is: " +
-                    str(game_state.all_blacks_together))
+        end_of_game_state_log(number_of_checks, game_state.get_number_of_moves_the_knights_made(),
+                              game_state.all_whites_together, game_state.all_blacks_together)
 
     # elif human_player is 'w':
     #     ai = ai_engine.chess_ai()
