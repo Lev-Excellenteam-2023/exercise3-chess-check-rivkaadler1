@@ -1,4 +1,3 @@
-#
 # The Chess Board class
 # Will store the state of the chess game, print the chess board, find valid moves, store move logs.
 #
@@ -6,6 +5,7 @@
 #
 from Piece import Rook, Knight, Bishop, Queen, King, Pawn
 from enums import Player
+from chess_check_logger import logger
 
 '''
 r \ c     0           1           2           3           4           5           6           7 
@@ -44,8 +44,12 @@ class game_state:
         self._black_king_location = [7, 3]
 
         self.white_king_can_castle = [True, True,
-                                      True]  # Has king not moved, has Rook1(col=0) not moved, has Rook2(col=7) not moved
+                                      True]  # Has king not moved, has Rook1(col=0) not moved, has Rook2(col=7) not
+        # moved
         self.black_king_can_castle = [True, True, True]
+
+        self.all_whites_together = -1
+        self.all_blacks_together = -1
 
         # Initialize White pieces
         white_rook_1 = Rook('r', 0, 0, Player.PLAYER_1)
@@ -110,6 +114,72 @@ class game_state:
              black_rook_2]
         ]
 
+    def get_pieces_on_the_board(self):
+        """
+        Returns a string which describes the pieces on the board, and updates the number of turns that all pieces of a
+        certain color survived together.
+        """
+        board_pieces = " "
+        for row in self.board:
+            for col in range(8):
+                if row[col] != Player.EMPTY:
+                    board_pieces += row[col].get_name() + " " + row[col].get_player() + " "
+        # Note: I implemented a function that does it (count_surviving_turns_for_color(self, player))in more
+        # efficient and elegant way but it doesn't work well in case of arbitrary exit
+        if self.all_whites_together == -1 and board_pieces.count("white") == 15:
+            self.all_whites_together = len(self.move_log) - 1
+        elif self.all_blacks_together == -1 and board_pieces.count("white") == 15:
+            self.all_blacks_together = len(self.move_log) - 1
+
+        return board_pieces
+
+    def get_number_of_moves_the_knights_made(self):
+        """
+        Calculates the number of moves made by the knights in the game.
+
+        Returns:
+        -------
+        int:
+            The number of moves made by the knights.
+
+        """
+        count_knights_moves = 0
+        for move in self.move_log:
+            if move.moving_piece.get_name() == 'n':
+                count_knights_moves += 1
+        return count_knights_moves
+
+    def count_surviving_turns_for_color(self, player):
+        """
+        Counts the number of turns that all pieces of a given player survive together in the game.
+
+        Parameters:
+            player (Player): The player whose surviving turns to count.
+
+        Returns:
+            int: The number of turns that all pieces of the given player survive together in the game.
+                 Returns -1 if the player has no surviving turns.
+        """
+        for move in self.move_log:
+            if move.moving_piece.get_player() != player and move.removed_piece != Player.EMPTY:
+                return self.move_log.index(move)
+        return -1
+
+    def get_current_player_king_location(self):
+        """
+        Returns the current player's king location in the game.
+
+        Returns:
+        -------
+        list:
+            The location of the current player's king.
+
+        """
+        if self.whose_turn():
+            return self._white_king_location
+        else:
+            return self._black_king_location
+
     def get_piece(self, row, col):
         if (0 <= row < 8) and (0 <= col < 8):
             return self.board[row][col]
@@ -146,7 +216,7 @@ class game_state:
                 for move in initial_valid_piece_moves:
                     can_move = True
                     for piece in checking_pieces:
-                        if moving_piece.get_name() is "k":
+                        if moving_piece.get_name() == "k":
                             temp = self.board[current_row][current_col]
                             self.board[current_row][current_col] = Player.EMPTY
                             temp2 = self.board[move[0]][move[1]]
@@ -157,10 +227,10 @@ class game_state:
                                 can_move = False
                             self.board[current_row][current_col] = temp
                             self.board[move[0]][move[1]] = temp2
-                        elif move == piece and len(checking_pieces) == 1 and moving_piece.get_name() is not "k" and \
+                        elif move == piece and len(checking_pieces) == 1 and moving_piece.get_name() != "k" and \
                                 (current_row, current_col) not in pinned_pieces:
                             pass
-                        elif move != piece and len(checking_pieces) == 1 and moving_piece.get_name() is not "k" and \
+                        elif move != piece and len(checking_pieces) == 1 and moving_piece.get_name() != "k" and \
                                 (current_row, current_col) not in pinned_pieces:
                             temp = self.board[move[0]][move[1]]
                             self.board[move[0]][move[1]] = moving_piece
@@ -175,7 +245,7 @@ class game_state:
                         valid_moves.append(move)
                 self._is_check = True
             # pinned checks
-            elif pinned_pieces and moving_piece.get_name() is not "k":
+            elif pinned_pieces and moving_piece.get_name() != "k":
                 if starting_square not in pinned_pieces:
                     for move in initial_valid_piece_moves:
                         valid_moves.append(move)
@@ -190,7 +260,7 @@ class game_state:
                         self.board[current_row][current_col] = moving_piece
                         self.board[move[0]][move[1]] = temp
             else:
-                if moving_piece.get_name() is "k":
+                if moving_piece.get_name() == "k":
                     for move in initial_valid_piece_moves:
                         temp = self.board[current_row][current_col]
                         temp2 = self.board[move[0]][move[1]]
@@ -229,6 +299,20 @@ class game_state:
             return 2
         else:
             return 3
+        '''
+        all_white_moves = self.get_all_legal_moves(Player.PLAYER_1)
+        all_black_moves = self.get_all_legal_moves(Player.PLAYER_2)
+        if not all_white_moves and not all_black_moves:
+            return 2
+        elif self.whose_turn() and not all_white_moves:
+            print("white lost")
+            return 0
+        elif not self.whose_turn() and not all_black_moves:
+            print("black lost")
+            return 1
+        else:
+            return 3
+        '''
 
     def get_all_legal_moves(self, player):
         # _all_valid_moves = [[], []]
@@ -562,7 +646,7 @@ class game_state:
     - check 8 directions and 8 knight squares
     check for pins
     - whatever blocked from above is a pin
-    
+
      - if immediate check, change check value to true
      - list valid moves to prevent check but not remove pin
      - if there are no valid moves to prevent check, checkmate
@@ -600,14 +684,14 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row,
                                                                                 king_location_col - _left).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row, king_location_col - _left))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
                 else:
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row,
                                                                                 king_location_col - _left).get_valid_piece_takes(
-                            self):
+                        self):
                         # self._is_check = True
                         _checks.append((king_location_row, king_location_col - _left))
                 break
@@ -631,14 +715,14 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row,
                                                                                 king_location_col + _right).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row, king_location_col + _right))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
                 else:
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row,
                                                                                 king_location_col + _right).get_valid_piece_takes(
-                            self):
+                        self):
                         # self._is_check = True
                         _checks.append((king_location_row, king_location_col + _right))
                 break
@@ -662,7 +746,7 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row + _down,
                                                                                 king_location_col).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row + _down, king_location_col))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
@@ -692,14 +776,14 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row - _up,
                                                                                 king_location_col).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row - _up, king_location_col))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
                 else:
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row - _up,
                                                                                 king_location_col).get_valid_piece_takes(
-                            self):
+                        self):
                         # self._is_check = True
                         _checks.append((king_location_row - _up, king_location_col))
                 break
@@ -725,7 +809,7 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row - _up,
                                                                                 king_location_col - _left).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row - _up, king_location_col - _left))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
@@ -759,7 +843,7 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row - _up,
                                                                                 king_location_col + _right).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row - _up, king_location_col + _right))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
@@ -781,7 +865,7 @@ class game_state:
                 self.get_piece(king_location_row + _down, king_location_col - _left) is not None:
             if self.is_valid_piece(king_location_row + _down, king_location_col - _left) and \
                     self.get_piece(king_location_row + _down, king_location_col - _left).is_player(player) and \
-                    self.get_piece(king_location_row + _down, king_location_col - _left).get_name() is not "k":
+                    self.get_piece(king_location_row + _down, king_location_col - _left).get_name() != "k":
                 if not _possible_pin:
                     _possible_pin = (king_location_row + _down, king_location_col - _left)
                 else:
@@ -793,7 +877,7 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row + _down,
                                                                                 king_location_col - _left).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row + _down, king_location_col - _left))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
@@ -827,7 +911,7 @@ class game_state:
                     self.board[_possible_pin[0]][_possible_pin[1]] = Player.EMPTY
                     if (king_location_row, king_location_col) in self.get_piece(king_location_row + _down,
                                                                                 king_location_col + _right).get_valid_piece_takes(
-                            self):
+                        self):
                         _pins.append(_possible_pin)
                         _pins_check.append((king_location_row + _down, king_location_col + _right))
                     self.board[_possible_pin[0]][_possible_pin[1]] = temp
@@ -854,7 +938,7 @@ class game_state:
                     # self._is_check = True
                     _checks.append((king_location_row + row_change[i], king_location_col + col_change[i]))
         # print([_checks, _pins, _pins_check])
-        return [_pins_check, _pins, _pins_check]
+        return [_checks, _pins, _pins_check]
 
 
 class chess_move():
